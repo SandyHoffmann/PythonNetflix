@@ -1,1 +1,1 @@
-x
+__all__ = ['config', 'model']
