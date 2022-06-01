@@ -9,6 +9,12 @@ sys.path.append(parentdir)
 from datetime import date
 from Model.model import *
 from Config.config import *
+from Model.colaborador import *
+
+if os.path.exists(arquivobd): 
+    os.remove(arquivobd) 
+
+db.create_all()
 
 usuario1 = Usuario(nome="Ana Maria",email="anamaria@gmail.com",senha="12345")
 usuario2 = Usuario(nome="Bernardo de Oliveira",email="bernardooliveira@gmail.com",senha="678")
@@ -85,7 +91,7 @@ db.session.commit()
 seriesFavoritas = SerieFavorita.query.all()
 
 for serie in seriesFavoritas:
-    print(f'Serie Favorita= {serie}')
+    print(f'Serie Favorita = {serie}')
 
 temporadaAssistida1 = TemporadaAssistida(id_usuario = 1, id_temporada = 4, qtdEpisodiosAssistidos = 2)
 temporadaAssistida2 = TemporadaAssistida(id_usuario = 1, id_temporada = 5, qtdEpisodiosAssistidos = 2)
@@ -100,8 +106,15 @@ db.session.commit()
 temporadasAssistidas = TemporadaAssistida.query.all()
 
 for temp in temporadasAssistidas:
-    print(f'Temporada Assistida= {temp}')
+    print(f'Temporada Assistida = {temp}')
 
+colaborador1 = Colaborador(nome="Bernardo dos Santos", salario=1500, turno="Vespertino")
 
+db.session.add(colaborador1)
 
+db.session.commit()
 
+colaborador = Colaborador.query.all()
+
+for colab in colaborador:
+    print(f'Colaborador = {colab}')
