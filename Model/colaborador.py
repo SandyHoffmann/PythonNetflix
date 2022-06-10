@@ -1,11 +1,5 @@
-import os, sys
-
-currentdir = os.path.dirname(os.path.realpath(__file__)) 
-parentdir = os.path.dirname(currentdir) 
-sys.path.append(parentdir)
-
-from Config.config import *
-from Model.model import Pessoa
+from Model.imports import *
+from Model.pessoa import Pessoa
 
 """
 Return que depende da classe Pessoa
@@ -14,7 +8,7 @@ return f"Colaborador('{self.nome}', '{self.cpf}', '{self.dtnasc}', '{self.salari
 """
 
 class Colaborador(Pessoa):
-    id = db.Column(db.Integer, db.ForeignKey('pessoa.id', ondelete="CASCADE"), primary_key=True)
+    cpf = db.Column(db.String(11), db.ForeignKey('pessoa.cpf', ondelete="CASCADE"), primary_key=True)
     salario = db.Column(db.Integer)
     turno = db.Column(db.String(254))
     
@@ -27,4 +21,4 @@ class Colaborador(Pessoa):
     """
 
     def __str__(self):
-        return f"Colaborador('{self.nome}', '{self.salario}', '{self.turno}')"
+        return f"Colaborador('{self.cpf}, {self.nome}, {self.dataNascimento}, {self.endereco}, '{self.salario}', '{self.turno}')"
