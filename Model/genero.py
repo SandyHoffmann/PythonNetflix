@@ -6,9 +6,4 @@ class Genero(db.Model):
     descricao = db.Column(db.String(254))
 
     def __str__(self):
-        return f"Genero('{self.titulo}', '{self.descricao}')"
-
-
-
-    def __str__(self):
-        return f"Serie('{self.titulo}', '{self.dataLancamento}', '{self.avaliacao}', '{self.id_genero}')"
+        return f"Genero(Título: {self.titulo}, Descrição: {self.descricao})"

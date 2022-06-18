@@ -93,15 +93,18 @@ dataLancamento8 = date(2021,9,15)
 dataLancamento9 = date(2012,2,10)
 
 
-serie1 = Serie(titulo="Friends", dataLancamento=dataLancamento1, avaliacao=8, id_genero=1)
+serie1 = Serie(titulo="Friends", dataLancamento=dataLancamento1, avaliacao=8, id_genero=1, id_colaborador="12345678910")
 serie2 = Serie(titulo="Midnight Mass", dataLancamento=dataLancamento2, avaliacao=10, id_genero=2)
 serie3 = Serie(titulo="Black Mirror", dataLancamento=dataLancamento3, avaliacao=9, id_genero=3)
+
 
 db.session.add(serie1)
 db.session.add(serie2)
 db.session.add(serie3)
 
 db.session.commit()
+
+
 
 #temporada
 
@@ -166,6 +169,8 @@ db.session.add(estudio2)
 db.session.add(estudio3)
 
 db.session.commit()
+
+serie1.relatorioSerie()
 
 #estudioSerie'
 

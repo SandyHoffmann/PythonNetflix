@@ -29,8 +29,8 @@ class Endereco (db.Model):
 
     # método para expressar o endereco em forma de texto
     def __str__(self):
-        return f'Endereco: {self.numero}, {self.logradouro}, '+\
-               f'{self.bairro}, {self.cep}, '+\
+        return f'Endereço: {self.numero}, {self.logradouro}, '+\
+               f'{self.bairro}, CEP: {self.cep}, '+\
                f'{self.estado}, {self.pais}'
 
     #endereco

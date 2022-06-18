@@ -11,4 +11,4 @@ class Episodio(InformacaoGeral):
         }
 
     def __str__(self):
-        return f"Serie('{self.titulo}', '{self.dataLancamento}', '{self.avaliacao}', '{self.id_temporada}', '{self.duracao}')"
+        return f"Episodio(Título: {self.titulo}, Data de Lançamento: {self.dataLancamento}, Avaliação: {self.avaliacao}, Duração: {self.duracao})"

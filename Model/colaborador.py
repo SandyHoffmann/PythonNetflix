@@ -21,4 +21,4 @@ class Colaborador(Pessoa):
     """
 
     def __str__(self):
-        return f"Colaborador('{self.cpf}, {self.nome}, {self.dataNascimento}, {self.endereco}, '{self.salario}', '{self.turno}')"
+        return f"Colaborador(CPF: {self.cpf}, Nome: {self.nome}, Data de Nascimento: {self.dataNascimento}, Salário: {self.salario}, Turno: {self.turno}, {self.endereco})"

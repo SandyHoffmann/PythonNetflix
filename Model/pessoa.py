@@ -20,4 +20,4 @@ class Pessoa(db.Model):
 
     # método para expressar a pessoa em forma de texto
     def __str__(self):
-        return f"{self.cpf}, {self.nome}, {self.dataNascimento}"
+        return f"CPF: {self.cpf}, Nome: {self.nome}, Data de Nascimento: {self.dataNascimento}"

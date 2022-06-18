@@ -5,6 +5,7 @@ class TemporadaAssistida(db.Model):
     id_temporada = db.Column(db.Integer, db.ForeignKey('temporada.id_temp', ondelete="CASCADE"))
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.cpf', ondelete="CASCADE"))
     qtdEpisodiosAssistidos = db.Column(db.Integer)
+    usuario = db.relationship("Usuario", backref="temporada_assistida", lazy=True)
 
     def __str__(self):
-        return f"Serie('{self.id_temporada}', '{self.id_usuario}', '{self.qtdEpisodiosAssistidos}')"
+        return f"Temporada Assistida(Quantidade de Episodios Assistidos: {self.qtdEpisodiosAssistidos})"
