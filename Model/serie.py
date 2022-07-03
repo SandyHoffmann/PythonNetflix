@@ -12,7 +12,7 @@ class Serie(InformacaoGeral):
     id = db.Column(db.Integer, db.ForeignKey('informacao_geral.id', ondelete="CASCADE"), primary_key=True)
     id_genero = db.Column(db.Integer, db.ForeignKey('genero.id', ondelete="SET NULL"))
     genero = db.relationship("Genero", backref="serie", lazy=True)
-    id_colaborador = db.Column(db.String, db.ForeignKey('colaborador.cpf', ondelete="SET NULL"))
+    id_colaborador = db.Column(db.String(11), db.ForeignKey('colaborador.cpf', ondelete="SET NULL"))
     colaborador = db.relationship("Colaborador", backref="serie", lazy=True)
 
     __mapper_args__ = {

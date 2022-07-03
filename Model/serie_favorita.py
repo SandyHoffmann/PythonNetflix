@@ -2,7 +2,7 @@ from Model.imports import *
 
 class SerieFavorita(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.cpf', ondelete="CASCADE"))
+    id_usuario = db.Column(db.String(11), db.ForeignKey('usuario.cpf', ondelete="CASCADE"))
     id_serie = db.Column(db.Integer, db.ForeignKey('serie.id', ondelete="CASCADE"))
     avaliacao = db.Column(db.Integer)
     serie = db.relationship("Serie", backref="serieFavorita", lazy=True)
