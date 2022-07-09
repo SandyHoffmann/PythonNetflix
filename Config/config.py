@@ -7,7 +7,7 @@ app = Flask(__name__)
 path = os.path.dirname(os.path.abspath(__file__))
 arquivobd = os.path.join(path, 'netflix2.db')
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+arquivobd
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root@localhost/netflix2"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:root@localhost/netflix2"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # remover warnings
 db = SQLAlchemy(app)
 # @event.listens_for(Engine, "connect")

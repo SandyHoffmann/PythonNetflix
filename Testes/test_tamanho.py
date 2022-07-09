@@ -4,6 +4,10 @@ currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir) 
 sys.path.append(parentdir)
 
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+
 from datetime import date
 from Config.config import *
 from Model.serie import Serie
@@ -23,35 +27,40 @@ listaSerie = []
 
 # db.session.commit()
 
+tamanho = 0
+tamanhoObj = 0
 
-
-for x in range(4**5):
+for x in range(4**7):
     serie = Serie(titulo="Game of Thrones",  id_genero=1, id_colaborador="12345678910")
     listaSerie.append(serie)
-    db.session.add(serie)
-    db.session.commit()
+    tamanho += sys.getsizeof(1343)
+    tamanho += sys.getsizeof(2)
+    tamanho += sys.getsizeof('12345678910')
+    # db.session.add(serie)
+    # db.session.commit()
 
-# print(os.path.getsize(arquivobd))
+print(sys.getsizeof(listaSerie))
+print(tamanho)
 
 #Memoria Volatil
 
-# Nas 4 séries iguais 88 Bytes
-# Nas 16 séries iguais 184 Bytes
-# Nas 64 séries iguais 632 Bytes
-# Nas 256 séries iguais 2208 Bytes 
-# Nas 1024 séries iguais 9016 Bytes 
-# Nas 4096 séries iguais 33920 Bytes
-# Nas 16384 séries iguais 140576 Bytes
-# Nas 65536 séries iguais 2115944 Bytes
-# Nas 1048576 séries iguais 8697456 Bytes
+# Nas 4 séries iguais 464 Bytes
+# Nas 16 séries iguais 1856 Bytes
+# Nas 64 séries iguais 7424 Bytes
+# Nas 256 séries iguais 29696 Bytes 
+# Nas 1024 séries iguais 118784 Bytes 
+# Nas 4096 séries iguais 475136 Bytes
+# Nas 16384 séries iguais 1900544 Bytes
 
 #Memoria Fisica
 
 # Nas 4 séries iguais 49,152 Bytes
 # Nas 16 séries iguais 49,152 Bytes
-# Nas 64 séries iguais 49,152 Bytes
-# Nas 256 séries iguais 49,152 Bytes 
+# Nas 64 séries iguais 49,152 Bytes 
+# Nas 256 séries iguais 49,152 Bytes
 # Nas 1024 séries iguais 147,456 Bytes 
+# Nas 4096 séries iguais 393216 Bytes
+# Nas 16384 séries iguais 2195456 Bytes
 
 
 """
@@ -72,3 +81,41 @@ DESC;
 # print(sys.getsizeof(listaSerie))
 # print(4**10)
 
+th = np.linspace(0, 2*np.pi, 128)
+
+# l1 = [88,
+# 184,
+# 632,
+# 2208,
+# 9016,
+# 33920,
+# 140576]
+
+l1 = [464,
+1856,
+7424,
+29696,
+118784,
+475136,
+1900544]
+
+l2 = [49152,
+49152,
+49152,
+49152,
+147456,
+393216,
+2195456,]
+
+def demo(sty):
+    mpl.style.use(sty)
+    fig, ax = plt.subplots(figsize=(5, 5))
+
+    ax.set_title('Diferença entre mem. Fisica e mem. Volatil'.format(sty), color='C0')
+    ax.plot( l1, 'C1', label='M.Vol')
+    ax.plot( l2, 'C2', label='M.Fis')
+    ax.legend()
+    plt.show()
+
+
+demo('seaborn')
